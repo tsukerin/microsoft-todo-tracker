@@ -1,0 +1,138 @@
+[
+  {
+    "@odata.etag": "W/\"NRCSvvhHdkO2d75WGfMsVQAGLUTgug==\"",
+    "importance": "normal",
+    "isReminderOn": false,
+    "status": "completed",
+    "title": "Поработать над проектом",
+    "createdDateTime": "2024-03-19T11:42:23.2747523Z",
+    "lastModifiedDateTime": "2024-03-19T11:42:23.4301189Z",
+    "hasAttachments": false,
+    "categories": [],
+    "id": "AQMkADAwATNiZmYAZC0wODc1LWU2MDMtMDACLTAwCgBGAAADwsvZ7soLyEKfC3Ju9Ue4YAcANRCSvvhHdkO2d75WGfMsVQAAAgESAAAANRCSvvhHdkO2d75WGfMsVQAGLST0IQAAAA==",
+    "body": {
+      "content": "",
+      "contentType": "text"
+    },
+    "completedDateTime": {
+      "dateTime": "2024-03-19T00:00:00.0000000",
+      "timeZone": "UTC"
+    },
+    "dueDateTime": {
+      "dateTime": "2024-03-18T21:00:00.0000000",
+      "timeZone": "UTC"
+    },
+    "recurrence": {
+      "pattern": {
+        "type": "weekly",
+        "interval": 1,
+        "month": 0,
+        "dayOfMonth": 0,
+        "daysOfWeek": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday"
+        ],
+        "firstDayOfWeek": "monday",
+        "index": "first"
+      },
+      "range": {
+        "type": "noEnd",
+        "startDate": "2024-03-19",
+        "endDate": "0001-01-01",
+        "recurrenceTimeZone": "UTC",
+        "numberOfOccurrences": 0
+      }
+    }
+  },
+  {
+    "@odata.etag": "W/\"NRCSvvhHdkO2d75WGfMsVQAGLUTgvA==\"",
+    "importance": "normal",
+    "isReminderOn": false,
+    "status": "notStarted",
+    "title": "Поработать над проектом",
+    "createdDateTime": "2024-03-19T11:42:19.9020777Z",
+    "lastModifiedDateTime": "2024-03-19T11:42:23.5181758Z",
+    "hasAttachments": false,
+    "categories": [],
+    "id": "AQMkADAwATNiZmYAZC0wODc1LWU2MDMtMDACLTAwCgBGAAADwsvZ7soLyEKfC3Ju9Ue4YAcANRCSvvhHdkO2d75WGfMsVQAAAgESAAAANRCSvvhHdkO2d75WGfMsVQAGLST0IAAAAA==",
+    "body": {
+      "content": "",
+      "contentType": "text"
+    },
+    "dueDateTime": {
+      "dateTime": "2024-03-19T21:00:00.0000000",
+      "timeZone": "UTC"
+    },
+    "recurrence": {
+      "pattern": {
+        "type": "weekly",
+        "interval": 1,
+        "month": 0,
+        "dayOfMonth": 0,
+        "daysOfWeek": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday"
+        ],
+        "firstDayOfWeek": "monday",
+        "index": "first"
+      },
+      "range": {
+        "type": "noEnd",
+        "startDate": "2024-03-19",
+        "endDate": "0001-01-01",
+        "recurrenceTimeZone": "UTC",
+        "numberOfOccurrences": 0
+      }
+    }
+  },
+  {
+    "@odata.etag": "W/\"NRCSvvhHdkO2d75WGfMsVQAGKHwujA==\"",
+    "importance": "normal",
+    "isReminderOn": false,
+    "status": "completed",
+    "title": "Префиксная сумма",
+    "createdDateTime": "2024-03-13T22:16:32.2726888Z",
+    "lastModifiedDateTime": "2024-03-15T19:56:33.1915408Z",
+    "hasAttachments": false,
+    "categories": [],
+    "id": "AQMkADAwATNiZmYAZC0wODc1LWU2MDMtMDACLTAwCgBGAAADwsvZ7soLyEKfC3Ju9Ue4YAcANRCSvvhHdkO2d75WGfMsVQAAAgESAAAANRCSvvhHdkO2d75WGfMsVQAGKFwJAQAAAA==",
+    "body": {
+      "content": "",
+      "contentType": "text"
+    },
+    "completedDateTime": {
+      "dateTime": "2024-03-15T00:00:00.0000000",
+      "timeZone": "UTC"
+    },
+    "dueDateTime": {
+      "dateTime": "2024-03-14T21:00:00.0000000",
+      "timeZone": "UTC"
+    }
+  },
+  {
+    "@odata.etag": "W/\"NRCSvvhHdkO2d75WGfMsVQAGKHv9fg==\"",
+    "importance": "normal",
+    "isReminderOn": false,
+    "status": "notStarted",
+    "title": "Бинарный поиск",
+    "createdDateTime": "2024-03-13T22:15:21.8460124Z",
+    "lastModifiedDateTime": "2024-03-13T22:15:31.0513498Z",
+    "hasAttachments": false,
+    "categories": [],
+    "id": "AQMkADAwATNiZmYAZC0wODc1LWU2MDMtMDACLTAwCgBGAAADwsvZ7soLyEKfC3Ju9Ue4YAcANRCSvvhHdkO2d75WGfMsVQAAAgESAAAANRCSvvhHdkO2d75WGfMsVQAGKFwJAAAB",
+    "body": {
+      "content": "",
+      "contentType": "text"
+    },
+    "dueDateTime": {
+      "dateTime": "2024-03-14T21:00:00.0000000",
+      "timeZone": "UTC"
+    }
+  }
+]
