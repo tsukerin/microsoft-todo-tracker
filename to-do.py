@@ -4,6 +4,7 @@ import webbrowser
 import requests
 from msal import ConfidentialClientApplication
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -11,8 +12,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
 import time
 import re
-import os
+from dotenv import dotenv_values
 import threading
+from tabulate import tabulate
+from colorama import Fore, Style
+import pandas as pd
+import datetime
+import os
 
 options = Options()
 options.add_argument('--headless')
@@ -40,10 +46,10 @@ def find_authorization_code(app, scopes):
     password_input = driver.find_element(by='id', value='i0118')
     password_input.send_keys(os.getenv('EMAIL_PASSWORD'))
     password_input.send_keys(Keys.ENTER)
-    time.sleep(2)
+    time.sleep(3)
 
     driver.find_element(by='id', value='declineButton').click()
-    time.sleep(2)
+    time.sleep(3)
 
     current_url = driver.current_url
     match = re.search(r'code=([^&]+)', current_url)
@@ -79,6 +85,44 @@ def get_todo_list(access_token):
     else:
         print(f"Ошибка при получении задач: {response.status_code}")
 
+def sorted_data(headers, data):
+    df = pd.DataFrame(data, columns=headers)
+
+    df['Крайний срок выполенения'] = pd.to_datetime(df['Крайний срок выполенения'])
+    df = df[(df['Крайний срок выполенения'].dt.date <= datetime.datetime.now().date()) & 
+            (df['Время выполнения'].isin([str(datetime.datetime.now().date()), 'Отсутствует']))]
+    
+    return df.drop_duplicates()
+
+def count_tasks(df):
+    return {
+        'completed': df[df['Статус выполнения'] == 'Выполнено']['Задача'].count(),
+        'uncompleted': df[df['Статус выполнения'] == 'Не выполнено']['Задача'].count()
+        }
+
+def out(api):
+    headers = ['Задача', 'Статус выполнения', 'Крайний срок выполенения', 'Время выполнения']
+
+    mapping = {
+        'completed': 'Выполнено',
+        'notStarted': 'Не выполнено'
+    }
+
+    data = [
+            [
+                task["title"], 
+                mapping.get(task["status"], task["status"]), 
+                task['recurrence']['range']['startDate'] if 'recurrence' in task else task['dueDateTime']['dateTime'][:10],
+                task['completedDateTime']['dateTime'][:10] if 'completedDateTime' in task else 'Отсутствует'
+            ] 
+        for task in api
+        ]
+    
+    print(tabulate(sorted_data(headers, data), headers='keys', tablefmt='grid', showindex=False))
+    print(f'{Fore.GREEN}Выполнено:{Style.RESET_ALL} {count_tasks(sorted_data(headers, data))['completed']} задачи')
+    print(f'{Fore.RED}Не выполнено:{Style.RESET_ALL} {count_tasks(sorted_data(headers, data))['uncompleted']} задачи')
+
+
 def main():
     client_id = os.getenv('CLIENT_ID')
     client_secret = os.getenv('CLIENT_SECRET')
@@ -95,9 +139,7 @@ def main():
     
     todo_client = get_todo_list(access_token)
     
-    print(f'Задача | Статус выполнения')
-    for item in todo_client:
-        print(f'{item['title']} | {item['status']}')
+    out(todo_client)
 
 if __name__ == '__main__':
     main()
